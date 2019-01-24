@@ -1,0 +1,7 @@
+# This file contains the output files that need %exclude. Full path
+# names, one per line.
+/usr/lib64/cmake/pugixml/pugixml-config-relwithdebinfo.cmake
+/usr/lib64/cmake/pugixml/pugixml-config.cmake
+/usr/lib64/libpugixml.so
+/usr/lib64/libpugixml.so.1
+/usr/lib64/libpugixml.so.1.8
