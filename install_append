@@ -1,1 +1,7 @@
+# Move Python packages into /usr/lib
 for src in %{buildroot}/usr/lib64/python*/site-packages; do dest=$(sed 's!/usr/lib64/!/usr/lib/!' <<< ${src}); mkdir -p $(dirname ${dest}); mv ${src} $(dirname ${dest}); done
+
+# Don't replace system pugixml
+rm -f %{buildroot}/usr/lib64/libpugixml.so*
+rm -f %{buildroot}/usr/lib64/haswell/libpugixml.so*
+rm -f %{buildroot}/usr/lib64/haswell/avx512_1/libpugixml.so*

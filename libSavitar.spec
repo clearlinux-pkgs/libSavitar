@@ -4,7 +4,7 @@
 #
 Name     : libSavitar
 Version  : 3.6.0
-Release  : 1
+Release  : 2
 URL      : https://github.com/Ultimaker/libSavitar/archive/3.6.0.tar.gz
 Source0  : https://github.com/Ultimaker/libSavitar/archive/3.6.0.tar.gz
 Summary  : No detailed summary available
@@ -14,7 +14,9 @@ Requires: libSavitar-lib = %{version}-%{release}
 Requires: libSavitar-license = %{version}-%{release}
 Requires: libSavitar-python = %{version}-%{release}
 Requires: libSavitar-python3 = %{version}-%{release}
+Requires: pugixml
 BuildRequires : buildreq-cmake
+BuildRequires : pugixml-dev
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : sip-bin
@@ -80,7 +82,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1548371634
+export SOURCE_DATE_EPOCH=1548443105
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -88,7 +90,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1548371634
+export SOURCE_DATE_EPOCH=1548443105
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libSavitar
 cp LICENSE %{buildroot}/usr/share/package-licenses/libSavitar/LICENSE
@@ -98,6 +100,9 @@ pushd clr-build
 popd
 ## install_append content
 for src in %{buildroot}/usr/lib64/python*/site-packages; do dest=$(sed 's!/usr/lib64/!/usr/lib/!' <<< ${src}); mkdir -p $(dirname ${dest}); mv ${src} $(dirname ${dest}); done
+rm -f %{buildroot}/usr/lib64/libpugixml.so*
+rm -f %{buildroot}/usr/lib64/haswell/libpugixml.so*
+rm -f %{buildroot}/usr/lib64/haswell/avx512_1/libpugixml.so*
 ## install_append end
 
 %files
@@ -105,10 +110,10 @@ for src in %{buildroot}/usr/lib64/python*/site-packages; do dest=$(sed 's!/usr/l
 
 %files dev
 %defattr(-,root,root,-)
+%exclude /usr/include/pugiconfig.hpp
+%exclude /usr/include/pugixml.hpp
 %exclude /usr/lib64/cmake/pugixml/pugixml-config-relwithdebinfo.cmake
 %exclude /usr/lib64/cmake/pugixml/pugixml-config.cmake
-%exclude /usr/lib64/libpugixml.so
-/usr/include/*.hpp
 /usr/include/Savitar/Face.h
 /usr/include/Savitar/MeshData.h
 /usr/include/Savitar/SavitarExport.h
@@ -125,8 +130,6 @@ for src in %{buildroot}/usr/lib64/python*/site-packages; do dest=$(sed 's!/usr/l
 
 %files lib
 %defattr(-,root,root,-)
-%exclude /usr/lib64/libpugixml.so.1
-%exclude /usr/lib64/libpugixml.so.1.8
 /usr/lib64/libSavitar.so.0
 /usr/lib64/libSavitar.so.0.1.0
 
