@@ -1,0 +1,27 @@
+From 5f83262107d179290c5a12db90181fbf5996c333 Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Thu, 30 Jan 2020 15:49:23 -0800
+Subject: [PATCH] Use PyQt5.sip
+
+Derived from
+https://src.fedoraproject.org/rpms/libarcus/pull-request/2#request_diff
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eecd5e9..cd192a4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -89,7 +89,7 @@ endif()
+ if(BUILD_PYTHON)
+     set(SIP_EXTRA_FILES_DEPEND python/Types.sip python/MeshData.sip python/SceneNode.sip python/Scene.sip)
+     #set(SIP_EXTRA_SOURCE_FILES python/Types.cpp)
+-    set(SIP_EXTRA_OPTIONS -g) # -g means always release the GIL before calling C++ methods.
++    set(SIP_EXTRA_OPTIONS -g -n PyQt5.sip) # -g means always release the GIL before calling C++ methods.
+     add_sip_python_module(Savitar python/ThreeMFParser.sip Savitar)
+ endif()
+ 
+-- 
+2.25.0
+
