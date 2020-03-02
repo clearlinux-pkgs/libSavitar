@@ -4,10 +4,10 @@
 #
 Name     : libSavitar
 Version  : 4.5.0
-Release  : 11
+Release  : 12
 URL      : https://github.com/Ultimaker/libSavitar/archive/4.5.0/libSavitar-4.5.0.tar.gz
 Source0  : https://github.com/Ultimaker/libSavitar/archive/4.5.0/libSavitar-4.5.0.tar.gz
-Summary  : No detailed summary available
+Summary  : C++ implementation of 3mf loading with SIP python bindings
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-3.0
 Requires: libSavitar-lib = %{version}-%{release}
@@ -37,6 +37,7 @@ Summary: dev components for the libSavitar package.
 Group: Development
 Requires: libSavitar-lib = %{version}-%{release}
 Provides: libSavitar-devel = %{version}-%{release}
+Requires: libSavitar = %{version}-%{release}
 Requires: libSavitar = %{version}-%{release}
 
 %description dev
@@ -89,9 +90,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582746459
+export SOURCE_DATE_EPOCH=1583167977
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -102,7 +104,7 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1582746459
+export SOURCE_DATE_EPOCH=1583167977
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libSavitar
 cp %{_builddir}/libSavitar-4.5.0/LICENSE %{buildroot}/usr/share/package-licenses/libSavitar/f98c7fffc3fe221e79fa19fe89c74e74c0da1266
