@@ -4,7 +4,7 @@
 #
 Name     : libSavitar
 Version  : 4.11.0
-Release  : 33
+Release  : 34
 URL      : https://github.com/Ultimaker/libSavitar/archive/4.11.0/libSavitar-4.11.0.tar.gz
 Source0  : https://github.com/Ultimaker/libSavitar/archive/4.11.0/libSavitar-4.11.0.tar.gz
 Summary  : No detailed summary available
@@ -87,7 +87,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1631721263
+export SOURCE_DATE_EPOCH=1635749035
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -100,7 +100,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1631721263
+export SOURCE_DATE_EPOCH=1635749035
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libSavitar
 cp %{_builddir}/libSavitar-4.11.0/LICENSE %{buildroot}/usr/share/package-licenses/libSavitar/f98c7fffc3fe221e79fa19fe89c74e74c0da1266
@@ -109,10 +109,10 @@ pushd clr-build
 %make_install
 popd
 ## Remove excluded files
-rm -f %{buildroot}/usr/include/pugiconfig.hpp
-rm -f %{buildroot}/usr/include/pugixml.hpp
-rm -f %{buildroot}/usr/lib64/cmake/pugixml/pugixml-config-relwithdebinfo.cmake
-rm -f %{buildroot}/usr/lib64/cmake/pugixml/pugixml-config.cmake
+rm -f %{buildroot}*/usr/include/pugiconfig.hpp
+rm -f %{buildroot}*/usr/include/pugixml.hpp
+rm -f %{buildroot}*/usr/lib64/cmake/pugixml/pugixml-config-relwithdebinfo.cmake
+rm -f %{buildroot}*/usr/lib64/cmake/pugixml/pugixml-config.cmake
 ## install_append content
 # Don't replace system pugixml
 rm -f %{buildroot}/usr/lib64/libpugixml.so*
