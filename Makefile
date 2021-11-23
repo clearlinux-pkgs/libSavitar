@@ -1,5 +1,5 @@
 PKG_NAME := libSavitar
-URL = https://github.com/Ultimaker/libSavitar/archive/4.12.0/libSavitar-4.12.0.tar.gz
+URL = https://github.com/Ultimaker/libSavitar/archive/4.12.1/libSavitar-4.12.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
