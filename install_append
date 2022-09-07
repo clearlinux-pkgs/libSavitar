@@ -1,4 +1,2 @@
 # Don't replace system pugixml
 rm -f %{buildroot}/usr/lib64/libpugixml.so*
-rm -f %{buildroot}/usr/lib64/haswell/libpugixml.so*
-rm -f %{buildroot}/usr/lib64/haswell/avx512_1/libpugixml.so*
