@@ -4,7 +4,7 @@
 #
 Name     : libSavitar
 Version  : 4.13.1
-Release  : 39
+Release  : 40
 URL      : https://github.com/Ultimaker/libSavitar/archive/4.13.1/libSavitar-4.13.1.tar.gz
 Source0  : https://github.com/Ultimaker/libSavitar/archive/4.13.1/libSavitar-4.13.1.tar.gz
 Summary  : No detailed summary available
