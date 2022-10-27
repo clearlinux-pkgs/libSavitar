@@ -4,7 +4,7 @@
 #
 Name     : libSavitar
 Version  : 4.13.1
-Release  : 41
+Release  : 42
 URL      : https://github.com/Ultimaker/libSavitar/archive/4.13.1/libSavitar-4.13.1.tar.gz
 Source0  : https://github.com/Ultimaker/libSavitar/archive/4.13.1/libSavitar-4.13.1.tar.gz
 Summary  : No detailed summary available
@@ -86,7 +86,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662575680
+export SOURCE_DATE_EPOCH=1666895447
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -99,11 +99,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662575680
+export SOURCE_DATE_EPOCH=1666895447
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libSavitar
-cp %{_builddir}/libSavitar-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/libSavitar/f98c7fffc3fe221e79fa19fe89c74e74c0da1266
-cp %{_builddir}/libSavitar-%{version}/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/libSavitar/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/libSavitar-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/libSavitar/f98c7fffc3fe221e79fa19fe89c74e74c0da1266 || :
+cp %{_builddir}/libSavitar-%{version}/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/libSavitar/ff3ed70db4739b3c6747c7f624fe2bad70802987 || :
 pushd clr-build
 %make_install
 popd
